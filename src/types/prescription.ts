@@ -12,6 +12,11 @@ export type Prescription = {
   createdAt: string;
   medicines: Medicine[];
 };
+export type PrescriptionDTO = {
+  patientName: string;
+  patientAge: number;
+  medicines: Medicine[];
+};
 
 export type Doctor = {
   id: string;

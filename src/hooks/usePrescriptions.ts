@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { prescriptionServices } from "../services/prescriptionService";
-import type { Prescription } from "../types/prescription";
+import type { PrescriptionDTO } from "../types/prescription";
 export const QUERY_KEYS = {
   PRESCRIPTIONS: ["prescriptions"] as const,
 };
@@ -16,7 +16,7 @@ export const usePrescriptions = () => {
   const totalPrescriptionsCount = prescriptionQuery.data?.length ?? 0;
   // mutation
   const createPrescriptionMutation = useMutation({
-    mutationFn: (dto: Prescription) =>
+    mutationFn: (dto: PrescriptionDTO) =>
       prescriptionServices.createPrescription(dto),
     onSuccess: () => {
       querClient.invalidateQueries({ queryKey: QUERY_KEYS.PRESCRIPTIONS });
