@@ -2,7 +2,7 @@ export type Medicine = {
   id: string;
   name: string;
   dosage: string;
-  frequency: number;
+  frequency: string;
 };
 
 export type Prescription = {
