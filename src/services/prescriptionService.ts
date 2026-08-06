@@ -1,0 +1,13 @@
+import { apiClient } from "../lib/apiClient";
+import type { Prescription } from "../types/prescription";
+
+export const prescriptionServices = {
+  getPrescriptions: async () => {
+    const data = await apiClient.get("/prescription");
+    return data.data;
+  },
+  createPrescription: async (dto: Prescription) => {
+    const data = await apiClient.post("/prescriptions", dto);
+    return data;
+  },
+};
