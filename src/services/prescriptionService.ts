@@ -3,7 +3,7 @@ import type { Prescription } from "../types/prescription";
 
 export const prescriptionServices = {
   getPrescriptions: async () => {
-    const data = await apiClient.get("/prescription");
+    const data = await apiClient.get<Prescription[]>("/prescription");
     return data.data;
   },
   createPrescription: async (dto: Prescription) => {
