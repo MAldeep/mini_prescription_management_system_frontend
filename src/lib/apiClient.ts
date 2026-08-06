@@ -77,7 +77,7 @@ apiClient.interceptors.response.use(
         })
           .then((newToken) => {
             originalRequest.headers.Authorization = `Bearer ${newToken}`;
-            apiClient(originalRequest);
+            return apiClient(originalRequest);
           })
           .catch((err) => Promise.reject(err));
       }
@@ -90,7 +90,7 @@ apiClient.interceptors.response.use(
         useAuthDoctor.getState().setAuth(user, accessToken);
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         preocessFailedQueue(null, accessToken);
-        apiClient(originalRequest);
+        return apiClient(originalRequest);
       } catch (refreshError) {
         preocessFailedQueue(refreshError, null);
         useAuthDoctor.getState().clearAuth();

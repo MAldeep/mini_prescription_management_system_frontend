@@ -35,8 +35,9 @@ export default function PrescriptionForm() {
       })),
     };
 
-    createPrescription(prescription);
-    reset();
+    createPrescription(prescription, {
+      onSuccess: () => reset(),
+    });
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
